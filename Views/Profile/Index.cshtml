@@ -1,0 +1,50 @@
+@model ApplicationUser
+
+<h1>My Profile</h1>
+
+<form asp-action="Update" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username" name="UserName" value="@Model.UserName" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="Email" value="@Model.Email" required>
+    </div>
+    <div class="form-group">
+        <label for="category">Category:</label>
+        <select class="form-control" id="category" name="Category" required>
+            <option value=@Model.Category>Choose an option</option>
+            <option value="delfi">Jaunākās ziņas</option>
+            <option value="bizness">Biznesa ziņas</option>
+            <option value="aculiecinieks">Aculiecinieka ziņas</option>
+            <option value="auto">Auto ziņas</option>
+            <option value="calis">Cālis ziņas</option>
+            <option value="sabiedrība">Sabiedrība</option>
+            <option value="izklaide">Izklades ziņas</option>
+            <option value="kultura">Kultūras ziņas</option>
+            <option value="laikazinas">Laika ziņas</option>
+            <option value="majadarzs">Māja & Dārzs ziņas</option>
+            <option value="mansdraugs">Mans draugs ziņas</option>
+            <option value="orakuls">Orakuls ziņas</option>
+            <option value="receptes">Recepšu ziņas</option>
+            <option value="skats">Skats.lv ziņas</option>
+            <option value="tasty">Tasty ziņas</option>
+            <option value="sports">Sporta ziņas</option>
+            <option value="turismagids">Tūrismagids.lv ziņas</option>
+            <option value="tv">Delfi.tv ziņas</option>
+            <option value="vina">Viņa.lv ziņas</option>
+            <option value="campus">Campus ziņas</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="amount">Amount:</label>
+        <input type="number" class="form-control" id="amount" name="Amount" value="@Model.Amount" required>
+    </div>
+    <div class="form-group">
+        <label for="file">Avatar:</label>
+        <input type="file" name="file" value=""/>
+        @Html.ValidationMessageFor(model => model.Avatar)
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<dynamic>
+<div class="container">
+    <h1 class="text-center mb-5">Newsfeed</h1>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <img src="@item.ImageUrl" class="card-img-top" alt="Image related to the news">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="@item.Link" target="_blank">@item.Title</a>
+                        </h5>
+                        <p class="card-text">@item.Description</p>
+                        <small class="text-muted">@item.PubDate.ToString("dd/MM/yyyy HH:mm:ss")</small>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

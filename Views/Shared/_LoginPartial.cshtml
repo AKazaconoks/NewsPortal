@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var user = await UserManager.GetUserAsync(User);
+        var avatar = user.Avatar;
+        <li class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <img src="~/Content/Images/UserImages/@avatar" alt="Avatar" asp-controller="Profile" asp-action="Index" title="Profile" style="width: 100px; height: 100px; border-radius: 50%; margin-right: 10px;">
+            <a class="nav-link text-dark font-weight-bold" asp-controller="Profile" asp-action="Index" title="Profile"> @user.UserName</a>
+        </li>
+        <li class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <form class="form-inline align-items-center" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Sign In</a>
+        </li>
+    }
+</ul>
